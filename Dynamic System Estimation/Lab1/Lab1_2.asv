@@ -21,4 +21,4 @@ hold on
 [x,y]=RungeKutta4(f,t0,h,tmax,y0);
 plot(x,y,'b')
 legend('3','4')
-title({'Solution of y¡¯=-2ty/(y^2-t^2) ';('t0=0  y0=4')})
+title({'Solution of yÂ¡Â¯=-2ty/(y^2-t^2) ';('t0=0  y0=4')})
