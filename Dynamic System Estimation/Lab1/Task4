@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+#ODE
+def f(y,t):
+    return -2*t*y/(y*y-t*t)
+
+#Runge-Kutta 3rd order
+def RK3(y0,t0,h):
+    k1=f(y0,t0)
+    k2=f(y0+h/2*k1,t0+h/2)
+    k3=f(y0-h*k1+2*h*k2,t0+h)
+    return y0+h/6*(k1+4*k2+k3)
+
+#Runge-Kutta 4th order
+def RK4(y0,t0,h):
+    k1=f(y0,t0)
+    k2=f(y0+h/2*k1,t0+h/2)
+    k3=f(y0+h/2*k2,t0+h/2)
+    k4=f(y0+h*k3,t0+h)
+    return y0+h/6*(k1+2*k2+2*k3+k4)
+
+#main
+y0=4
+h=1
+t=0
+tempy3=y0
+tempy4=y0
+y_3=np.zeros(5)
+y_4=np.zeros(5)
+x_t=np.arange(5)
+while t<5:
+      
+    y_3[t]=tempy3
+    y_4[t]=tempy4
+    tempy3=RK3(tempy3,t,h)
+    tempy4=RK4(tempy4,t,h)
+    t=t+1
+ 
+
+print('3rd order: y(4)='+np.str(y_3[4]))
+print('4th order: y(4)='+np.str(y_4[4]))
+
+#plt.figure(1,figsize=(12, 9))
+plt.plot(x_t,y_3,'*-',label='3rd order ')
+plt.plot(x_t,y_4,'v-',label='4th order')
+plt.legend()
+plt.show()
