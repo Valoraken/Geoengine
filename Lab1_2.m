@@ -1,0 +1,24 @@
+
+% the ODE:  y'=-2ty/(y^2-t^2)
+% interval of t: [0,4]
+% stepwidth: h=1
+% initial values: t0=0 y0=4
+%
+clear 
+clc
+% the rewritten function handle
+f=@(t,y) -2*t*y/(y^2-t^2);
+t0=0;
+h=1;
+tmax=5;
+y0=4;
+% visualize
+[X,Y]= RungeKutta3(f,t0,h,tmax,y0);
+plot(X,Y,'r')
+text(X,Y,'('num2str(X))
+
+hold on
+[x,y]=RungeKutta4(f,t0,h,tmax,y0);
+plot(x,y,'b')
+legend('3','4')
+title({'Solution of y¡¯=-2ty/(y^2-t^2) ';('t0=0  y0=4')})
