@@ -56,7 +56,7 @@ for i=1:5
 %     s(:,i)=sum;
 end
 Hs
-H_ave=(sum(Hs')/5)'
+H_ave=(sum(Hs')/5
 
 formal_error_s=sqrt(sigma_s)
 
