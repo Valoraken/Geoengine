@@ -11,7 +11,7 @@ function [X,Y] = Runge_Kutta3(fxy,x0,h,xmax,y0)
 % X is the value of x in the interval of [0,6] with the stepwidth h
 % the result will also be visualized
 
-%%   check input
+%%%   check input
 if class(fxy)~='function_handle'
     error('incorrect fucntion type! ');
 end
