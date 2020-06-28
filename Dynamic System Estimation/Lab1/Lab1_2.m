@@ -11,10 +11,11 @@ clc
 % the rewritten function handle
 f=@(t,y) -2*t*y/(y^2-t^2);
 t0=0;
-h=0.01;
+h=1;
 tmax=4;
 y0=4;
 % visualize
+figure(3);
 [X,Y]= RungeKutta3(f,t0,h,tmax,y0);
 plot(X,Y,'r')
 fprintf('y(4) by 3rd order method: %f \r',Y(tmax/h+1))

@@ -47,11 +47,11 @@ Y=zeros((xmax-x0)/h,1);
 for xi=x0:h:xmax
     X(i)=xi;
     Y(i)=yi;
-    k1=fxy(xi,yi);
-    k2=fxy(xi+0.5*h,yi+0.5*h*k1);
-    k3=fxy(xi+0.5*h,yi+0.5*h*k2);
-    k4=fxy(xi+h,yi+h*k3);
-    yi=yi+h/6*(k1+2*k2+2*k3+k4);
+    k1=fxy(xi,yi)
+    k2=fxy(xi+0.5*h,yi+0.5*h*k1)
+    k3=fxy(xi+0.5*h,yi+0.5*h*k2)
+    k4=fxy(xi+h,yi+h*k3)
+    yi=yi+h/6*(k1+2*k2+2*k3+k4)
     i=i+1;
 end
 % visualize

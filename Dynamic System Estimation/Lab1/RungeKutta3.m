@@ -44,9 +44,9 @@ Y=zeros((xmax-x0)/h,1);
 for ti=x0:h:xmax
     X(i)=ti;
     Y(i)=yi;
-    k1=fxy(ti,yi);
-    k2=fxy(ti+0.5*h,yi+0.5*h*k1);
-    k3=fxy(ti+h,yi-h*k1+2*h*k2);
-    yi=yi+h/6*(k1+4*k2+k3);
+    k1=fxy(ti,yi)
+    k2=fxy(ti+0.5*h,yi+0.5*h*k1)
+    k3=fxy(ti+h,yi-h*k1+2*h*k2)
+    yi=yi+h/6*(k1+4*k2+k3)
     i=i+1;
 end

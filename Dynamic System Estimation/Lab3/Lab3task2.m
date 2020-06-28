@@ -1,0 +1,27 @@
+% clc;
+clear all;
+F=[0 1 0 0;0 0 0 0;0 0 0 1;0 0 0 0];
+G=[1 0;0 0; 0 1;0 0];
+dt=1;
+dt2=2;
+covxy0=[1.2 0 0.3 0;0 0.64 0 0;0.3 0 1 0;0 0 0 0.04];
+W=[0.8^2 0;0 0.2^2];
+a=zeros(4,4);
+b=G*W*G';
+A=[-F b;a F']*dt;
+B=expm(A);
+phi=B(5:8,5:8)';
+Q=phi*B(1:4,5:8);
+Cov=phi*covxy0*phi'+Q;
+%----------------------------------
+G2=[0 0;1 0;0 0;0 1];
+b2=G2*W*G2';
+A2=[-F b2;a F']*dt;
+B2=expm(A2);
+phi2=B2(5:8,5:8)';
+Q2=phi2*B2(1:4,5:8);
+Cov2=phi2*Cov*phi2'+Q2;
+Jiao=atan2(2*Cov2(1,3),(Cov2(1,1)-Cov2(3,3)))/2;
+ecc=axes2ecc(Cov2(1,1),Cov2(3,3));
+[elat,elon] = ellipse1(0,0,[Cov(1,1) ecc],Jiao/pi*180);
+plot(elat,elon);
